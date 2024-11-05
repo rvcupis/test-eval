@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test-eval</title>
+
+    <style>
+      *:focus {
+        outline: 2px dotted;
+      }
+      body {
+        font-size: 10px;
+        display: grid;
+        box-sizing: border-box;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+      #app {
+        display: flex;
+        flex-direction: column;
+      }
+      #buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      button {
+        font-size: inherit;
+        white-space: pre-line;
+      }
+      output {
+        white-space: pre;
+        font-family: monospace;
+        padding: 0.5em;
+        margin-bottom: 1px;
+        box-shadow: 0 0 0 1px;
+      }
+
+      #clear {
+        align-self: flex-start;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div id="buttons"></div>
+      <output id="output"></output>
+      <output id="clicks">0</output>
+      <output id="version"></output>
+      <button id="clear" type="button">Clear log</button>
+      <output id="log"></output>
+    </div>
+
+    <form id="evalSourceCode" action="">
+      <label for="sourceCode">Source code to eval</label><br />
+      <textarea name="sourceCode" id="sourceCode"></textarea>
+      <footer>
+        <button type="submit">Apply</button>
+      </footer>
+    </form>
+
+    <script>
+      (() => {
+        document.forms.evalSourceCode.addEventListener("submit", (event) => {
+          event.preventDefault();
+          eval(event.target.elements.sourceCode.value);
+        });
+      })();
+    </script>
+  </body>
+</html>
