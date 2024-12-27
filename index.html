@@ -20,6 +20,7 @@
       #app {
         display: flex;
         flex-direction: column;
+        width: 100vw;
       }
       #buttons {
         display: flex;
@@ -27,6 +28,7 @@
         align-items: flex-start;
       }
       button {
+        text-align: left;
         font-size: inherit;
         white-space: pre-line;
       }
@@ -36,6 +38,7 @@
         padding: 0.5em;
         margin-bottom: 1px;
         box-shadow: 0 0 0 1px;
+        overflow: scroll;
       }
 
       #clear {
@@ -46,7 +49,7 @@
   <body>
     <div id="app">
       <div id="buttons"></div>
-      <output id="output"></output>
+      <output id="output" style="position: fixed; right: 0; bottom: 0; background: #fff;"></output>
       <output id="clicks">0</output>
       <output id="version"></output>
       <button id="clear" type="button">Clear log</button>
